@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WaterfallChartDemo.MainPage"
+             xmlns:Chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             xmlns:local="clr-namespace:WaterfallChartDemo">
+
+    <Grid Margin="20">
+        <Grid.BindingContext>
+            <local:NetCashFlow/>
+        </Grid.BindingContext>
+        <Chart:SfCartesianChart x:Name="chart">
+            <Chart:SfCartesianChart.Title>
+                <Label Text="Net Cash Flow"
+                        HorizontalTextAlignment="Center" TextColor="#FF455E7A"
+                       FontSize="Title" FontAttributes="Bold"/>
+            </Chart:SfCartesianChart.Title>
+            <Chart:SfCartesianChart.XAxes>
+                <Chart:CategoryAxis ShowMajorGridLines="False">
+                    <Chart:CategoryAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle StrokeWidth="0"/>
+                    </Chart:CategoryAxis.MajorTickStyle>
+                    <Chart:CategoryAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle FontSize="15"/>
+                    </Chart:CategoryAxis.LabelStyle>
+                </Chart:CategoryAxis>
+            </Chart:SfCartesianChart.XAxes>
+            <Chart:SfCartesianChart.YAxes>
+                <Chart:NumericalAxis IsVisible="False"
+                                     Maximum="8000"
+                                     ShowMajorGridLines="False"/>
+            </Chart:SfCartesianChart.YAxes>
+            <Chart:WaterfallSeries XBindingPath="Month" YBindingPath="Fund" 
+                                   SummaryBindingPath="IsSum"
+                                   ItemsSource="{Binding Data}" AllowAutoSum="True"
+                                   ShowDataLabels="True"
+                                   NegativePointsBrush="#FFFE1A67"
+                                   Fill="#FF4CC0C0" SummaryPointsBrush="#FFA9CF41">
+                <Chart:WaterfallSeries.ConnectorLineStyle>
+                    <Chart:ChartLineStyle StrokeDashArray="1,1" StrokeWidth="1" Stroke="black"/>
+                </Chart:WaterfallSeries.ConnectorLineStyle>
+                <Chart:WaterfallSeries.DataLabelSettings>
+                    <Chart:CartesianDataLabelSettings LabelPlacement="Outer" UseSeriesPalette="False">
+                        <Chart:CartesianDataLabelSettings.LabelStyle>
+                            <Chart:ChartDataLabelStyle LabelFormat="$#,##"/>
+                        </Chart:CartesianDataLabelSettings.LabelStyle>
+                    </Chart:CartesianDataLabelSettings>
+                </Chart:WaterfallSeries.DataLabelSettings>
+            </Chart:WaterfallSeries>
+        </Chart:SfCartesianChart>
+    </Grid>
+
+</ContentPage>
