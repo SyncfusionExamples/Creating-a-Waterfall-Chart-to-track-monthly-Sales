@@ -32,8 +32,8 @@
             </Chart:SfCartesianChart.YAxes>
             <Chart:WaterfallSeries XBindingPath="Month" YBindingPath="Fund" 
                                    SummaryBindingPath="IsSum"
-                                   ItemsSource="{Binding Data}" AllowAutoSum="True"
-                                   ShowDataLabels="True"
+                                   ItemsSource="{Binding Data}" 
+                                   ShowDataLabels="True" ShowConnectorLine="True"
                                    NegativePointsBrush="#FFFE1A67"
                                    Fill="#FF4CC0C0" SummaryPointsBrush="#FFA9CF41">
                 <Chart:WaterfallSeries.ConnectorLineStyle>
